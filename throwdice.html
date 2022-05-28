@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="winner">winner member appear here</div>
+    <div id="container">
+        <div id="div1">member1</div>
+        <br>
+        <div id="div2">member2</div>
+        <br>
+        <div id="div3">member3</div>
+        <br>
+    </div>
+    <button onclick="myFun()">Roll The Dice</button>
+</body>
+    <script>
+        function myFun(){
+            // Math.floor((Math.random() * 6) + 1);
+            var div1=document.getElementById("div1");
+            div1.innerText= Math.floor((Math.random() * 6) + 1);
+            var div2=document.getElementById("div2");
+            div2.innerText= Math.floor((Math.random() * 6) + 1);
+            var div3=document.getElementById("div3");
+            div3.innerText= Math.floor((Math.random() * 6) + 1);
+            if(Number(div1.innerText)>Number(div2.innerText) && Number(div1.innerText)>Number(div3.innerText)){
+                document.getElementById("winner").innerText="member 1 is winner";
+                div1.style.color="green"
+                if(Number(div2.innerText)>Number(div3.innerText)){
+                    div2.style.color="yellow"
+                    div3.style.color="red"
+                }
+                else{
+                    div2.style.color="red"
+                    div3.style.color="yellow"
+                }
+            }
+            else if(Number(div2.innerText)>Number(div1.innerText) && Number(div2.innerText)>Number(div3.innerText)){
+                document.getElementById("winner").innerText="member 2 is winner";
+                div2.style.color="green"
+                if(Number(div1.innerText)>Number(div3.innerText)){
+                    div1.style.color="yellow"
+                    div3.style.color="red"
+                }
+                else{
+                    div1.style.color="red"
+                    div3.style.color="yellow"
+                }
+            }
+            else if(Number(div3.innerText)>Number(div1.innerText) && Number(div3.innerText)>Number(div2.innerText)){
+                document.getElementById("winner").innerText="member 3 is winner";
+                div3.style.color="green"
+                if(Number(div1.innerText)>Number(div2.innerText)){
+                    div1.style.color="yellow"
+                    div2.style.color="red"
+                }
+                else{
+                    div1.style.color="red"
+                    div2.style.color="yellow"
+                }
+            }
+            else{
+                document.getElementById("winner").innerText="no one win the game";
+                document.getElementById("container").style.setProperty('color','blue','important');
+            }
+            
+        }
+    </script>
+</html>
